@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>d:\kinac-pfp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>kinac-pfp.log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %date{HH:mm:ss.SSS} %5level \(%c.java:%L\) %M\(\) %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    
+    <logger name="org.springframework" level="INFO" ></logger>
+    <logger name="org.springframework.beans.factory" level="WARN" ></logger>
+    <logger name="org.springframework.web.context.support" level="WARN" ></logger>
+    <logger name="org.springframework.security.web" level="WARN" ></logger>
+    <logger name="org.springframework.security.config.http.HttpSecurityBeanDefinitionParser" level="WARN" ></logger>
+    <logger name="org.springframework.core.io.support.PathMatchingResourcePatternResolver" level="WARN" ></logger>
+
+	<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="DEBUG" ></logger>
+
+    <logger name="kr.re.kinac.pfp" level="DEBUG" ></logger>
+     
+    <!-- turn OFF all logging (children can override) -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+<!--         <appender-ref ref="FILE" /> -->
+    </root>
+</configuration>
